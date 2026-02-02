@@ -4,34 +4,6 @@
   <title>Valentine Surprise</title>
   <style>
     body {
-      background-color: pink;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-    .popup {
-      background: white;
-      border: 3px solid red;
-      border-radius: 15px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-    h1 {
-      color: red;
-      font-size: 2em;
-    }
-    img {
-      margin-top: 20px;
-      width: 250px;
-    }
-  </style>
-  <title>Valentine Surprise</title>
-  <style>
-    body {
       background: linear-gradient(to right, pink, lightpink);
       display: flex;
       justify-content: center;
@@ -45,19 +17,23 @@
       background: white;
       border: 3px solid red;
       border-radius: 20px;
-      padding: 30px;
+      padding: 40px;
       text-align: center;
       box-shadow: 0 0 30px rgba(255,0,0,0.5);
       animation: pulse 2s infinite;
+      width: 90%;          /* make box wider on mobile */
+      max-width: 600px;    /* limit size on larger screens */
     }
     h1 {
       color: crimson;
-      font-size: 2em;
+      font-size: 1.8em;
       margin: 10px 0;
+      word-wrap: break-word;
     }
     img {
       margin-top: 20px;
-      width: 250px;
+      width: 80%;
+      max-width: 300px;
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
@@ -90,7 +66,6 @@
     .heart {
       position: absolute;
       font-size: 2em;
-      color: red;
       animation: floatUp 4s linear forwards;
     }
     @keyframes floatUp {
@@ -106,19 +81,22 @@
     <h1>With you, I dream of a lifetime together 💖🌌</h1>
     <img src="romantic-image.jpg" alt="Love Image">
     <br>
-	    <h1>Could you be my Valentine forever? 💍💕🌹</h1>
+    <h1>Could you be my Valentine forever? 💍💕🌹</h1>
     <button onclick="showLove()">Yes ❤️</button>
     <div class="message" id="loveMessage">I Love you my sweet Aruu ❤️🌹😘💫</div>
   </div>
+
   <script>
     function showLove() {
       document.getElementById("loveMessage").style.display = "block";
-      for (let i = 0; i < 20; i++) {
+      const emojis = ["❤️","😘","💋","🌹","💞"]; // mix of hearts & kisses
+      for (let i = 0; i < 30; i++) { // more bubbles for effect
         let heart = document.createElement("div");
         heart.className = "heart";
-        heart.innerHTML = "❤️";
+        heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
         heart.style.left = Math.random() * window.innerWidth + "px";
         heart.style.top = window.innerHeight + "px";
+        heart.style.color = "crimson";
         document.body.appendChild(heart);
         setTimeout(() => { heart.remove(); }, 4000);
       }
