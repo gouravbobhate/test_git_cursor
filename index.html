@@ -29,17 +29,100 @@
       width: 250px;
     }
   </style>
+  <title>Valentine Surprise</title>
+  <style>
+    body {
+      background: linear-gradient(to right, pink, lightpink);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+    }
+    .popup {
+      background: white;
+      border: 3px solid red;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255,0,0,0.5);
+      animation: pulse 2s infinite;
+    }
+    h1 {
+      color: crimson;
+      font-size: 2em;
+      margin: 10px 0;
+    }
+    img {
+      margin-top: 20px;
+      width: 250px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: darkred;
+      transform: scale(1.1);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 2em;
+      color: crimson;
+      display: none;
+    }
+    .heart {
+      position: absolute;
+      font-size: 2em;
+      color: red;
+      animation: floatUp 4s linear forwards;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-600px); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
   <div class="popup">
-<h1>Hey Babdii ❤️🌹😘</h1>
-<h1>You’re my today, my tomorrow, my forever ❤️✨</h1>
-<h1>Could you be my Valentine forever? 💍💕🌹</h1>
-<h1>I Love you my sweet Aruu ❤️🌹😘💫</h1>
-<h1>With you, I dream of a lifetime together 💖🌌</h1>
-
+    <h1>Hey Babdii ❤️🌹😘</h1>
+    <h1>You’re my today, my tomorrow, my forever ❤️✨</h1>
+    <h1>With you, I dream of a lifetime together 💖🌌</h1>
     <img src="romantic-image.jpg" alt="Love Image">
+    <br>
+	    <h1>Could you be my Valentine forever? 💍💕🌹</h1>
+    <button onclick="showLove()">Yes ❤️</button>
+    <div class="message" id="loveMessage">I Love you my sweet Aruu ❤️🌹😘💫</div>
   </div>
+  <script>
+    function showLove() {
+      document.getElementById("loveMessage").style.display = "block";
+      for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 4000);
+      }
+    }
+  </script>
 </body>
 </html>
-
