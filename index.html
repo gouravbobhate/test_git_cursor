@@ -4,7 +4,7 @@
   <title>Valentine Surprise</title>
   <style>
     body {
-      background: linear-gradient(to right, pink, lightpink);
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -16,35 +16,35 @@
     .popup {
       background: white;
       border: 3px solid red;
-      border-radius: 20px;
-      padding: 40px;
+      border-radius: 25px;
+      padding: 50px;
       text-align: center;
-      box-shadow: 0 0 30px rgba(255,0,0,0.5);
+      box-shadow: 0 0 40px rgba(255,0,0,0.6);
       animation: pulse 2s infinite;
-      width: 90%;          /* make box wider on mobile */
-      max-width: 600px;    /* limit size on larger screens */
+      width: 95%;          /* fills more space on mobile */
+      max-width: 700px;    /* bigger on desktop too */
     }
     h1 {
       color: crimson;
-      font-size: 1.8em;
-      margin: 10px 0;
+      font-size: 2em;
+      margin: 15px 0;
       word-wrap: break-word;
     }
     img {
       margin-top: 20px;
-      width: 80%;
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      width: 85%;
+      max-width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
     }
     button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 1.2em;
+      margin-top: 25px;
+      padding: 14px 30px;
+      font-size: 1.3em;
       background: red;
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -58,19 +58,25 @@
       100% { transform: scale(1); }
     }
     .message {
-      margin-top: 20px;
-      font-size: 2em;
+      margin-top: 25px;
+      font-size: 2.2em;
       color: crimson;
       display: none;
+      text-shadow: 0 0 15px pink, 0 0 25px red;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px pink; }
+      to { text-shadow: 0 0 25px red; }
     }
     .heart {
       position: absolute;
       font-size: 2em;
-      animation: floatUp 4s linear forwards;
+      animation: floatUp 5s linear forwards;
     }
     @keyframes floatUp {
       0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-600px); opacity: 0; }
+      100% { transform: translateY(-700px); opacity: 0; }
     }
   </style>
 </head>
@@ -83,14 +89,14 @@
     <br>
     <h1>Could you be my Valentine forever? 💍💕🌹</h1>
     <button onclick="showLove()">Yes ❤️</button>
-    <div class="message" id="loveMessage">I Love you my sweet Aruu ❤️🌹😘💫</div>
+    <div class="message" id="loveMessage">I Love You Arya ❤️🌹😘💫💋💞</div>
   </div>
 
   <script>
     function showLove() {
       document.getElementById("loveMessage").style.display = "block";
-      const emojis = ["❤️","😘","💋","🌹","💞"]; // mix of hearts & kisses
-      for (let i = 0; i < 30; i++) { // more bubbles for effect
+      const emojis = ["❤️","😘","💋","🌹","💞","💖","😍"]; // more kisses & love
+      for (let i = 0; i < 40; i++) { // more bubbles for dramatic effect
         let heart = document.createElement("div");
         heart.className = "heart";
         heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
@@ -98,7 +104,7 @@
         heart.style.top = window.innerHeight + "px";
         heart.style.color = "crimson";
         document.body.appendChild(heart);
-        setTimeout(() => { heart.remove(); }, 4000);
+        setTimeout(() => { heart.remove(); }, 5000);
       }
     }
   </script>
